@@ -125,9 +125,6 @@ namespace gui {
 		const ImVec4 text_muted	= ImVec4(0.35f, 0.35f, 0.35f, 1.00f);
 		const ImVec4 accent		= ImVec4(0.12f, 0.45f, 0.70f, 1.00f);
 		const ImVec4 divisor = ImVec4(0.85f, 0.85f, 0.85f, 0.50f); 
-
-		// Add room between plot elements and axes
-		//style.CellPadding = ImVec2(16.0f, 16.0f);
 		
 		colors[ImGuiCol_Text]				  = text_main;
 		colors[ImGuiCol_TextDisabled]		  = text_muted;
@@ -216,8 +213,8 @@ namespace gui {
 		const std::vector<unsigned int>& bin_counts = h.bins();
 
 		int bins = h.bins().size();
-		float range_min = h.lower_extreme();
-		float range_max = h.upper_extreme();
+		float range_min = h.range_lower();
+		float range_max = h.range_upper();
 		float bin_width = (range_max - range_min) / bins;
 		std::string plot_title = title;
 		int color_id = (int) items.size();
